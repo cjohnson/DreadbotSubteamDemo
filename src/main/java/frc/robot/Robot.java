@@ -13,6 +13,9 @@ public class Robot extends TimedRobot {
   // This is a reference to a motor controller, which is used to control the robot motor's functions.
   // It can do a lot more than we will work with today, but we are going to keep it simple!
   private CANSparkMax motor;
+
+  // This is the joystick which can give us the information provided by the physical joystick 
+  // of the driver station!
   private DreadbotController joystick;
 
   @Override
@@ -26,9 +29,13 @@ public class Robot extends TimedRobot {
 
   // Helpful Tips/Questions for Writing Code from Collin & Ethan!!!
 
-  // Think about the problem at hand - what do we need to do in a logical order?
-  // What are some techniques we can use to do it?
-  // If you need help, ask your teammates! 
+  // * Think about the problem at hand - what do we need to do in a logical order?
+  // * What are some techniques we can use to do it?
+  // * If you need help, ask your teammates! 
+  // 
+  // 1. What system are we relying on to carry out tasks? (motors, solenoids?)
+  // 2. What are we asking the system to do? (Spin motors, actuate solenoids)
+  // 3. How do we represent our instruction in a way the robot will understand? (Programming syntax)
 
   @Override
   public void teleopPeriodic() {
@@ -71,6 +78,20 @@ public class Robot extends TimedRobot {
   private void thirdStepSolution() {
     // Set a new variable called speed, which is equal to the current value of the joystick.
     double speed = joystick.getYAxis();
+
+    // Set the motor speed
+    motor.set(speed);
+  }
+
+  @SuppressWarnings("unused")
+  private void fourthStepSolution() {
+    // Set a new variable called speed, which is equal to the current value of the joystick.
+    double speed = joystick.getYAxis();
+
+    // Conditional manipulation - only spin if the speed is in a given range!
+    if(speed < 0.0) {
+      speed = 0.0;
+    }
 
     // Set the motor speed
     motor.set(speed);
