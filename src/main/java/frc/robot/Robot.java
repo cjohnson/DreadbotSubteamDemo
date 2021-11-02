@@ -83,13 +83,29 @@ public class Robot extends TimedRobot {
     motor.set(speed);
   }
 
+  // Contents of the solution for problem 4. ULTRA-MAXIMUM TOP SECRET
   @SuppressWarnings("unused")
   private void fourthStepSolution() {
     // Set a new variable called speed, which is equal to the current value of the joystick.
     double speed = joystick.getYAxis();
 
-    // Conditional manipulation - only spin if the speed is in a given range!
+    // Conditional manipulation - only spin if the speed is greater than zero!
     if(speed < 0.0) {
+      speed = 0.0;
+    }
+
+    // Set the motor speed
+    motor.set(speed);
+  }
+
+  // Contents of the solution for problem 5. PENTAGON-LEVEL TOP SECRET
+  @SuppressWarnings("unused")
+  private void fifthStepSolution() {
+    // Set a new variable called speed, which is equal to the current value of the joystick.
+    double speed = joystick.getYAxis();
+
+    // Conditional manipulation - only spin if the speed is in a given range!
+    if(speed < -0.5 && speed > 0.5) {
       speed = 0.0;
     }
 
